@@ -1,1 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Smart Multi-Tank IoT Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">💧</div>
+
+            <div>
+                <h1>Smart Multi-Tank</h1>
+                <p>IoT Water Monitoring System</p>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <span>System Online</span>
+        </div>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- OVERVIEW -->
+        <section class="overview">
+
+            <div class="page-heading">
+                <h2>Water Tank Monitoring</h2>
+                <p>Real-time monitoring and automatic pump control</p>
+            </div>
+
+            <div class="overview-cards">
+
+                <div class="overview-card">
+                    <div class="card-icon">🏭</div>
+
+                    <div>
+                        <span>Total Tanks</span>
+                        <strong>3</strong>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="card-icon">💧</div>
+
+                    <div>
+                        <span>System Level</span>
+                        <strong id="systemLevel">--%</strong>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="card-icon">⚙️</div>
+
+                    <div>
+                        <span>Pumps Running</span>
+                        <strong id="pumpsRunning">0</strong>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="card-icon">🚨</div>
+
+                    <div>
+                        <span>Alerts</span>
+                        <strong id="alertCount">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TANKS -->
+        <section class="tanks-section">
+
+            <div class="section-title">
+                <h2>Tank Status</h2>
+                <span>Live Data</span>
+            </div>
+
+
+            <div class="tank-grid">
+
+                <!-- TANK 1 -->
+                <div class="tank-card">
+
+                    <div class="tank-header">
+                        <div>
+                            <h3>Tank 1</h3>
+                            <p>Ultrasonic Sensor</p>
+                        </div>
+
+                        <span class="tank-status safe">
+                            SAFE
+                        </span>
+                    </div>
+
+
+                    <div class="tank-visual">
+
+                        <div class="water-tank">
+
+                            <div
+                                class="water-level"
+                                id="tank1Water"
+                                style="height: 65%;">
+                            </div>
+
+                            <div class="tank-percentage" id="tank1Level">
+                                65%
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tank-data">
+
+                        <div class="data-item">
+                            <span>Water Level</span>
+                            <strong id="tank1Distance">65%</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Distance</span>
+                            <strong>-- cm</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Pump</span>
+                            <strong class="pump-off">OFF</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TANK 2 -->
+                <div class="tank-card">
+
+                    <div class="tank-header">
+                        <div>
+                            <h3>Tank 2</h3>
+                            <p>Ultrasonic Sensor</p>
+                        </div>
+
+                        <span class="tank-status warning">
+                            WARNING
+                        </span>
+                    </div>
+
+
+                    <div class="tank-visual">
+
+                        <div class="water-tank">
+
+                            <div
+                                class="water-level"
+                                id="tank2Water"
+                                style="height: 78%;">
+                            </div>
+
+                            <div class="tank-percentage" id="tank2Level">
+                                78%
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tank-data">
+
+                        <div class="data-item">
+                            <span>Water Level</span>
+                            <strong id="tank2Distance">78%</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Distance</span>
+                            <strong>-- cm</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Pump</span>
+                            <strong class="pump-off">OFF</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TANK 3 -->
+                <div class="tank-card">
+
+                    <div class="tank-header">
+                        <div>
+                            <h3>Tank 3</h3>
+                            <p>Ultrasonic Sensor</p>
+                        </div>
+
+                        <span class="tank-status critical">
+                            CRITICAL
+                        </span>
+                    </div>
+
+
+                    <div class="tank-visual">
+
+                        <div class="water-tank">
+
+                            <div
+                                class="water-level"
+                                id="tank3Water"
+                                style="height: 92%;">
+                            </div>
+
+                            <div class="tank-percentage" id="tank3Level">
+                                92%
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tank-data">
+
+                        <div class="data-item">
+                            <span>Water Level</span>
+                            <strong id="tank3Distance">92%</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Distance</span>
+                            <strong>-- cm</strong>
+                        </div>
+
+                        <div class="data-item">
+                            <span>Pump</span>
+                            <strong class="pump-on">ON</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROL PANEL -->
+        <section class="control-section">
+
+            <div class="section-title">
+                <h2>System Control</h2>
+                <span>Manual / Automatic</span>
+            </div>
+
+
+            <div class="control-panel">
+
+                <div class="control-item">
+
+                    <div>
+                        <h3>Automatic Mode</h3>
+                        <p>Automatically control pumps according to tank level.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="autoMode"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <div class="control-item">
+
+                    <div>
+                        <h3>System Access</h3>
+                        <p>Enable or disable remote system control.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="systemAccess"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+
+                <div class="control-item">
+
+                    <div>
+                        <h3>Pump Control</h3>
+                        <p>Manually control the water pump.</p>
+                    </div>
+
+                    <button
+                        class="pump-button"
+                        id="pumpButton"
+                    >
+                        Turn Pump ON
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALERTS -->
+        <section class="alerts-section">
+
+            <div class="section-title">
+                <h2>System Alerts</h2>
+            </div>
+
+            <div class="alert-box" id="alertBox">
+
+                <div class="alert-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <strong>No Active Alerts</strong>
+                    <p>All tanks are operating normally.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            Smart Multi-Tank IoT System
+            <span>•</span>
+            ESP32 + MQTT + ThingsBoard
+        </p>
+
+        <p>
+            Developed by Abdul Rehman
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
