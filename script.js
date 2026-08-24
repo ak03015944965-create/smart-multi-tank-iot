@@ -460,7 +460,8 @@ function automaticPumpControl() {
     }
 
 
-    updateDashboard();
+   updateDashboard();
+updatePumpButton();
 
 }
 
@@ -471,6 +472,23 @@ function automaticPumpControl() {
 
 const pumpButton =
     document.querySelector("#pumpButton");
+
+function updatePumpButton() {
+
+    if (!pumpButton) return;
+
+    if (tanks[3].pump) {
+
+        pumpButton.textContent = "Turn Pump OFF";
+
+    } else {
+
+        pumpButton.textContent = "Turn Pump ON";
+
+    }
+
+}
+
 
 if (pumpButton) {
 
@@ -483,16 +501,18 @@ if (pumpButton) {
             document.querySelector("#autoMode");
 
 
+        // System access check
+
         if (systemAccess && !systemAccess.checked) {
 
-            alert(
-                "System Access is disabled."
-            );
+            alert("System Access is disabled.");
 
             return;
 
         }
 
+
+        // Automatic mode check
 
         if (autoMode && autoMode.checked) {
 
@@ -505,17 +525,23 @@ if (pumpButton) {
         }
 
 
-        tanks[3].pump =
-            !tanks[3].pump;
+        // Toggle Tank 3 pump
 
+        tanks[3].pump = !tanks[3].pump;
+
+
+        // Update button immediately
+
+        updatePumpButton();
+
+
+        // Update dashboard
 
         updateDashboard();
 
     });
 
 }
-
-
 // ========================================
 // AUTOMATIC MODE SWITCH
 // ========================================
