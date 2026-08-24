@@ -11,6 +11,13 @@ The system calculates the water level as a percentage, automatically controls th
 The system also sends real-time telemetry using MQTT to a ThingsBoard IoT platform.
 
 The complete system is simulated using Wokwi.
+## 🖥️ Dashboard Preview
+
+![Smart Multi-Tank IoT Dashboard](smart-multi-tank-dashboard.png)
+
+## 🌐 Live Demo
+
+[Open Smart Multi-Tank IoT Dashboard](https://ak03015944965-create.github.io/smart-multi-tank-iot/)
 
 ## ✨ Features
 
