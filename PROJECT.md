@@ -4,7 +4,9 @@
 
 The Smart Multi-Tank IoT system is a web-based monitoring and control interface designed for managing multiple water tanks.
 
-The system provides a professional dashboard for monitoring tank levels, controlling pumps, viewing system status, and managing alarms.
+## 🖥️ Dashboard Preview
+
+![Smart Multi-Tank IoT Dashboard](smart-multi-tank-dashboard.png)
 
 ## 🚀 Features
 
