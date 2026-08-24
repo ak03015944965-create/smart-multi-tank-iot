@@ -589,53 +589,43 @@ function updateDashboard() {
 // ========================================
 
 updateDashboard();
-
-
 // ========================================
 // DEMO SENSOR SIMULATION
 // ========================================
 
 setInterval(() => {
 
-    const autoMode =
-        document.querySelector("#autoMode");
-
+    const autoMode = document.querySelector("#autoMode");
 
     if (!autoMode || !autoMode.checked) {
         return;
     }
 
-
     for (let i = 1; i <= 3; i++) {
 
+        // Pump OFF = tank level slowly decreases
         if (!tanks[i].pump) {
-
-            tanks[i].level -= 0.3;
-
+            tanks[i].level -= 1;
         }
 
+        // Pump ON = tank level increases
         else {
-
-            tanks[i].level += 0.8;
-
+            tanks[i].level += 2;
         }
 
-
-        // Keep values between 0 and 100
-
-        if (tanks[i].level < 0) {
-            tanks[i].level = 0;
-        }
-
-        if (tanks[i].level > 100) {
-            tanks[i].level = 100;
-        }
-
+        // Keep level between 0 and 100
+        tanks[i].level = Math.max(
+            0,
+            Math.min(100, tanks[i].level)
+        );
     }
 
-
+    // Automatic pump control
     automaticPumpControl();
 
+    // Refresh everything visible
     updateDashboard();
 
-}, 3000);
+}, 1000);
+
+
