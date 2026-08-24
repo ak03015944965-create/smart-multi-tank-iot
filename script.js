@@ -595,37 +595,88 @@ updateDashboard();
 
 setInterval(() => {
 
-    const autoMode = document.querySelector("#autoMode");
+    const systemAccess =
+        document.querySelector("#systemAccess");
 
-    if (!autoMode || !autoMode.checked) {
+    const autoMode =
+        document.querySelector("#autoMode");
+
+
+    // System access disabled = stop simulation
+    if (systemAccess && !systemAccess.checked) {
         return;
     }
 
+
+    // ========================================
+    // AUTOMATIC MODE
+    // ========================================
+
+    if (autoMode && autoMode.checked) {
+
+        for (let i = 1; i <= 3; i++) {
+
+            // Pump OFF → tank level decreases
+            if (!tanks[i].pump) {
+                tanks[i].level -= 1;
+            }
+
+            // Pump ON → tank level increases
+            else {
+                tanks[i].level += 2;
+            }
+
+        }
+
+        // Automatically decide which pumps should run
+        automaticPumpControl();
+
+    }
+
+
+    // ========================================
+    // MANUAL MODE
+    // ========================================
+
+    else {
+
+        // Only Tank 3 is controlled by our manual button
+
+        if (tanks[3].pump) {
+
+            // Pump ON → tank fills
+            tanks[3].level += 2;
+
+        } else {
+
+            // Pump OFF → tank level decreases
+            tanks[3].level -= 1;
+
+        }
+
+    }
+
+
+    // ========================================
+    // KEEP LEVEL BETWEEN 0 AND 100
+    // ========================================
+
     for (let i = 1; i <= 3; i++) {
 
-        // Pump OFF = tank level slowly decreases
-        if (!tanks[i].pump) {
-            tanks[i].level -= 1;
-        }
-
-        // Pump ON = tank level increases
-        else {
-            tanks[i].level += 2;
-        }
-
-        // Keep level between 0 and 100
         tanks[i].level = Math.max(
             0,
             Math.min(100, tanks[i].level)
         );
+
     }
 
-    // Automatic pump control
-    automaticPumpControl();
 
-    // Refresh everything visible
+    // ========================================
+    // UPDATE DASHBOARD
+    // ========================================
+
     updateDashboard();
 
-}, 1000);
 
+}, 1000);
 
